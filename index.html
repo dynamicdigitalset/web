@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Dynamic Digitals – Premier digital marketing agency in Addis Ababa. We help businesses grow online through social media management, content creation, and targeted advertising."/>
+<title>Dynamic Digitals | Focus on your business. We'll bring the customers.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ───────────── CSS VARIABLES ───────────── */
+:root{
+  --purple:#A100FF;
+  --purple-dim:rgba(161,0,255,.15);
+  --purple-mid:rgba(161,0,255,.35);
+  --purple-glow:0 0 40px rgba(161,0,255,.5);
+  --purple-glow-sm:0 0 18px rgba(161,0,255,.4);
+  --black:#050508;
+  --dark:#0c0c14;
+  --card:#12121c;
+  --card2:#171724;
+  --border:rgba(161,0,255,.18);
+  --text:#e8e8f0;
+  --muted:#8888a8;
+  --white:#ffffff;
+  --radius:18px;
+  --nav-h:72px;
+  --ff-head:'Space Grotesk',sans-serif;
+  --ff-body:'Plus Jakarta Sans',sans-serif;
+}
+
+/* ───────────── RESET & BASE ───────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:var(--ff-body);font-weight:400;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:var(--ff-body)}
+
+/* ───────────── SCROLLBAR ───────────── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:99px}
+
+/* ───────────── UTILITY ───────────── */
+.container{width:min(1200px,92vw);margin-inline:auto}
+.section{padding:100px 0}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);background:var(--purple-dim);border:1px solid var(--border);padding:6px 16px;border-radius:99px;margin-bottom:20px}
+.tag::before{content:'';width:6px;height:6px;background:var(--purple);border-radius:50%;box-shadow:var(--purple-glow-sm);display:block}
+h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.12;color:var(--white)}
+h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.015em}
+h3{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700}
+p{color:var(--muted);line-height:1.8;font-weight:400;letter-spacing:.01em;font-size:.97rem}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-head);font-size:.9rem;font-weight:700;letter-spacing:.04em;padding:14px 32px;border-radius:99px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#6a00ff);color:#fff;box-shadow:var(--purple-glow)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 60px rgba(161,0,255,.65)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid var(--border)}
+.btn-outline:hover{background:var(--purple-dim);border-color:var(--purple);transform:translateY(-3px)}
+
+/* GLOW ORBS (decorative) */
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(90px);opacity:.35}
+
+/* ───────────── NAVBAR ───────────── */
+nav#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
+nav#navbar.scrolled{background:rgba(5,5,8,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--border)}
+.nav-inner{width:min(1200px,92vw);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo img{height:40px;width:auto;max-width:160px;object-fit:contain;object-position:left center}
+.nav-logo span{font-family:var(--ff-head);font-size:1.25rem;font-weight:800;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);letter-spacing:.04em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.burger{display:none;flex-direction:column;gap:5px;width:28px;cursor:pointer}
+.burger span{height:2px;background:var(--white);border-radius:99px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,8,.97);backdrop-filter:blur(24px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--ff-head);font-size:2rem;font-weight:700;color:var(--white);transition:color .2s}
+.mobile-menu a:hover{color:var(--purple)}
+.mobile-menu .btn{margin-top:16px}
+
+/* ───────────── HERO ───────────── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:var(--nav-h)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(161,0,255,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(100,0,200,.12) 0%,transparent 60%),var(--black)}
+.hero-orb1{width:500px;height:500px;background:var(--purple);top:-120px;right:-80px}
+.hero-orb2{width:350px;height:350px;background:#3a00cc;bottom:0;left:-100px}
+.hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0}
+.hero-text .tag{margin-bottom:24px}
+.hero-h1{margin-bottom:24px}
+.hero-h1 em{font-style:normal;color:var(--purple);position:relative}
+.hero-h1 em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),transparent);border-radius:99px}
+.hero-sub{font-size:1.08rem;font-weight:400;line-height:1.85;letter-spacing:.015em;margin-bottom:40px;max-width:480px;color:rgba(220,220,235,.7)}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:14px}
+.hero-stats{display:flex;gap:32px;margin-top:52px}
+.stat-item{text-align:left}
+.stat-num{font-family:var(--ff-head);font-size:2rem;font-weight:800;color:var(--white)}
+.stat-num span{color:var(--purple)}
+.stat-label{font-size:.8rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-card-wrap{position:relative;z-index:1}
+.hero-mock{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;width:340px;box-shadow:var(--purple-glow),0 40px 80px rgba(0,0,0,.5)}
+.mock-bar{display:flex;gap:6px;margin-bottom:20px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-chart{display:flex;align-items:flex-end;gap:8px;height:120px;margin:16px 0}
+.mock-bar-item{flex:1;background:linear-gradient(to top,var(--purple),#6a00ff);border-radius:6px 6px 0 0;opacity:.8;transition:.3s}
+.mock-bar-item:hover{opacity:1}
+.mock-metric{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid var(--border)}
+.metric-label{font-size:.8rem;color:var(--muted)}
+.metric-val{font-family:var(--ff-head);font-size:1rem;font-weight:700;color:var(--white)}
+.metric-up{color:#22d97a;font-size:.75rem;font-weight:600}
+.float-badge{position:absolute;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px 18px;box-shadow:var(--purple-glow-sm);font-family:var(--ff-head);font-size:.8rem;font-weight:700;white-space:nowrap;animation:float 3s ease-in-out infinite}
+.float-badge.b1{top:-20px;left:-30px;animation-delay:0s}
+.float-badge.b2{bottom:20px;right:-30px;animation-delay:1.5s}
+.float-badge .badge-num{font-size:1.3rem;display:block;color:var(--purple)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ───────────── ABOUT ───────────── */
+#about{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--purple-glow)}
+.about-img-frame img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--purple),#5500cc);border-radius:var(--radius);padding:20px 24px;color:#fff;font-family:var(--ff-head)}
+.about-badge strong{font-size:2rem;display:block;line-height:1}
+.about-badge small{font-size:.75rem;opacity:.8}
+.about-text .tag{margin-bottom:20px}
+.about-text h2{margin-bottom:20px}
+.about-text p{margin-bottom:16px}
+.founder-card{margin-top:36px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;align-items:center;gap:20px}
+.founder-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--purple);box-shadow:var(--purple-glow-sm);flex-shrink:0}
+.founder-info h4{font-size:1rem;color:var(--white);margin-bottom:4px}
+.founder-info p{font-size:.82rem;margin-bottom:10px;color:var(--muted)}
+.social-row{display:flex;gap:10px}
+.social-icon{width:32px;height:32px;border-radius:8px;background:var(--purple-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.2s}
+.social-icon:hover{background:var(--purple);border-color:var(--purple)}
+.social-icon svg{width:16px;height:16px;fill:var(--white)}
+
+/* ───────────── SERVICES ───────────── */
+#services{background:var(--black)}
+.section-head{text-align:center;margin-bottom:64px}
+.section-head .tag{display:inline-flex}
+.section-head p{max-width:520px;margin:16px auto 0;font-size:1.05rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--purple-dim),transparent);opacity:0;transition:.35s}
+.service-card:hover{transform:translateY(-8px);border-color:var(--purple);box-shadow:var(--purple-glow)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:54px;height:54px;background:var(--purple-dim);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:.3s}
+.service-card:hover .service-icon{background:var(--purple);box-shadow:var(--purple-glow-sm)}
+.service-icon svg{width:26px;height:26px;stroke:var(--purple);fill:none;stroke-width:1.8;transition:.3s}
+.service-card:hover .service-icon svg{stroke:#fff}
+.service-card h3{margin-bottom:12px;color:var(--white)}
+.service-card p{font-size:.9rem}
+.service-num{position:absolute;top:24px;right:24px;font-family:var(--ff-head);font-size:3rem;font-weight:800;color:rgba(161,0,255,.06);line-height:1}
+
+/* ───────────── VIDEO ───────────── */
+#video-section{background:var(--dark);position:relative;overflow:hidden}
+.video-bg-orb{position:absolute;width:600px;height:600px;background:var(--purple);border-radius:50%;filter:blur(130px);opacity:.12;top:50%;left:50%;transform:translate(-50%,-50%)}
+.video-inner{position:relative;z-index:1;text-align:center}
+.video-inner .tag{display:inline-flex}
+.video-inner h2{margin-bottom:16px}
+.video-inner>p{max-width:500px;margin:0 auto 48px;font-size:1.05rem}
+.video-frame-wrap{position:relative;display:inline-block;max-width:340px;width:100%}
+.video-glow-ring{position:absolute;inset:-4px;border-radius:30px;background:conic-gradient(from 0deg,var(--purple),#3a00cc,var(--purple));z-index:0;animation:spin-ring 4s linear infinite}
+@keyframes spin-ring{to{transform:rotate(360deg)}}
+.video-glow-ring::after{content:'';position:absolute;inset:4px;background:var(--dark);border-radius:27px}
+.video-container{position:relative;z-index:1;border-radius:26px;overflow:hidden;border:2px solid rgba(161,0,255,.5);box-shadow:var(--purple-glow),0 40px 100px rgba(0,0,0,.6)}
+.video-container video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+.video-shine{position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:shine 5s infinite 1s}
+@keyframes shine{to{left:150%}}
+
+/* ───────────── WHY US ───────────── */
+#why{background:var(--black)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(145deg,rgba(18,18,28,.95),rgba(12,12,20,.98));
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px 28px 32px;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+.why-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(161,0,255,.07),transparent 60%);
+  opacity:0;transition:.4s;border-radius:20px;
+}
+.why-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(161,0,255,.5),transparent);
+  opacity:0;transition:.4s;
+}
+.why-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(161,0,255,.4);
+  box-shadow:0 0 40px rgba(161,0,255,.18),0 20px 60px rgba(0,0,0,.4);
+}
+.why-card:hover::before{opacity:1}
+.why-card:hover::after{opacity:1}
+.why-card:hover .why-icon-wrap{background:rgba(161,0,255,.2);border-color:rgba(161,0,255,.4);box-shadow:0 0 20px rgba(161,0,255,.3)}
+.why-card:hover .why-icon-wrap svg{stroke:var(--purple)}
+.why-icon-wrap{
+  width:48px;height:48px;
+  border-radius:12px;
+  background:rgba(161,0,255,.08);
+  border:1px solid rgba(161,0,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+.why-icon-wrap svg{
+  width:22px;height:22px;
+  stroke:rgba(161,0,255,.7);
+  fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .3s;
+}
+.why-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px;color:var(--white);letter-spacing:-.01em}
+.why-card p{font-size:.875rem;line-height:1.75;color:var(--muted)}
+
+/* ───────────── TESTIMONIALS ───────────── */
+#testimonials{background:var(--dark);overflow:hidden}
+.testimonials-track-wrap{overflow:hidden;position:relative;margin-top:16px}
+.testimonials-track-wrap::before,.testimonials-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.testimonials-track-wrap::before{left:0;background:linear-gradient(to right,var(--dark),transparent)}
+.testimonials-track-wrap::after{right:0;background:linear-gradient(to left,var(--dark),transparent)}
+.testimonials-track{display:flex;gap:24px;width:max-content;animation:marquee 30s linear infinite}
+.testimonials-track:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;width:360px;flex-shrink:0;transition:.3s}
+.t-card:hover{border-color:var(--purple);box-shadow:var(--purple-glow-sm)}
+.t-stars{display:flex;gap:3px;margin-bottom:16px}
+.t-star{color:#f5c518;font-size:1rem}
+.t-quote{font-size:.9rem;line-height:1.7;margin-bottom:24px;color:rgba(232,232,240,.8)}
+.t-client{display:flex;align-items:center;gap:14px;border-top:1px solid var(--border);padding-top:20px}
+.t-client-img{width:48px;height:48px;border-radius:12px;object-fit:cover;border:1px solid var(--border)}
+.t-client-name{font-family:var(--ff-head);font-size:.9rem;font-weight:700;color:var(--white)}
+.t-client-role{font-size:.78rem;color:var(--muted)}
+
+/* ───────────── CONTACT ───────────── */
+#contact{background:var(--black)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contact-info h2{margin-bottom:16px}
+.contact-info>p{margin-bottom:36px}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-detail-icon{width:44px;height:44px;background:var(--purple-dim);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-detail-icon svg{width:20px;height:20px;stroke:var(--purple);fill:none;stroke-width:1.8}
+.contact-detail h4{font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.contact-detail p{font-size:.95rem;color:var(--white)}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.8rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:13px 16px;color:var(--white);font-family:var(--ff-body);font-size:.95rem;outline:none;transition:.25s;resize:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(136,136,168,.5)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px var(--purple-dim)}
+.form-group textarea{min-height:130px}
+.form-submit{width:100%;padding:16px;font-size:1rem;font-weight:700;border-radius:99px;background:linear-gradient(135deg,var(--purple),#5500cc);color:#fff;box-shadow:var(--purple-glow);transition:.3s;font-family:var(--ff-head)}
+.form-submit:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(161,0,255,.6)}
+.map-wrap{margin-top:40px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--purple-glow-sm)}
+.map-wrap iframe{width:100%;height:260px;display:block;filter:invert(1) hue-rotate(180deg) saturate(.5)}
+
+/* ───────────── FOOTER ───────────── */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:70px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-brand img{height:52px;width:auto;max-width:200px;margin-bottom:16px;object-fit:contain;object-position:left center}
+.footer-brand-name{font-family:var(--ff-head);font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:12px}
+.footer-brand p{font-size:.88rem;max-width:280px}
+.footer-col h4{font-family:var(--ff-head);font-size:.9rem;font-weight:700;color:var(--white);letter-spacing:.06em;margin-bottom:20px}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{font-size:.88rem;color:var(--muted);transition:.2s}
+.footer-col ul li a:hover{color:var(--purple)}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-social{width:40px;height:40px;border-radius:10px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.25s}
+.footer-social:hover{background:var(--purple);border-color:var(--purple);transform:translateY(-3px);box-shadow:var(--purple-glow-sm)}
+.footer-social svg{width:18px;height:18px;fill:var(--white)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:.82rem;color:var(--muted)}
+.footer-bottom span{color:var(--purple)}
+
+/* ───────────── VIDEO CONTROLS ───────────── */
+.video-controls{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;display:flex;align-items:center;gap:10px;background:linear-gradient(to top,rgba(5,5,8,.85),transparent);z-index:10;border-radius:0 0 26px 26px;opacity:0;transition:opacity .3s}
+.video-container:hover .video-controls{opacity:1}
+.vid-btn{width:36px;height:36px;border-radius:50%;background:rgba(161,0,255,.3);border:1px solid rgba(161,0,255,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;flex-shrink:0}
+.vid-btn:hover{background:var(--purple);border-color:var(--purple);box-shadow:var(--purple-glow-sm)}
+.vid-btn svg{width:14px;height:14px;stroke:var(--white)}
+.vol-wrap{flex:1;display:flex;align-items:center}
+.vol-slider{width:100%;-webkit-appearance:none;appearance:none;height:3px;background:rgba(161,0,255,.3);border-radius:99px;outline:none;cursor:pointer}
+.vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--purple);box-shadow:var(--purple-glow-sm);cursor:pointer}
+.vol-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--purple);border:none;cursor:pointer}
+
+/* ───────────── PARTNERSHIPS ───────────── */
+#partnerships{background:var(--black)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;cursor:pointer;border:1px solid var(--border);transition:all .35s cubic-bezier(.4,0,.2,1)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item:hover{border-color:var(--purple);box-shadow:var(--purple-glow)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,8,.85) 0%,rgba(5,5,8,.1) 50%,transparent 100%);display:flex;align-items:flex-end;padding:20px}
+.gallery-caption{font-family:var(--ff-head);font-size:.9rem;font-weight:600;color:var(--white);letter-spacing:.02em;opacity:0;transform:translateY(8px);transition:all .3s}
+.gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0)}
+.gallery-caption-always{font-family:var(--ff-head);font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.02em}
+.gallery-hidden{display:none}
+.gallery-reveal-animate{animation:galleryReveal .5s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes galleryReveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.view-more-wrap{text-align:center;margin-top:40px}
+.btn-view-more{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-head);font-size:.9rem;font-weight:700;letter-spacing:.05em;padding:14px 36px;border-radius:99px;background:transparent;color:var(--white);border:1.5px solid var(--purple);box-shadow:var(--purple-glow-sm);transition:all .3s;cursor:pointer}
+.btn-view-more:hover{background:var(--purple-dim);box-shadow:var(--purple-glow);transform:translateY(-3px)}
+.btn-view-more svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:2;transition:.3s}
+/* Mobile horizontal scroll */
+@media(max-width:768px){
+  .gallery-grid{display:none}
+  .gallery-scroll-wrap{display:flex!important}
+  .view-more-wrap{display:none!important}
+}
+.gallery-scroll-wrap{display:none;overflow-x:auto;gap:16px;padding:4px 4px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gallery-scroll-wrap::-webkit-scrollbar{display:none}
+.gallery-scroll-item{flex:0 0 80vw;max-width:300px;scroll-snap-align:start;position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--border)}
+.gallery-scroll-item img{width:100%;height:100%;object-fit:cover}
+.gallery-scroll-item .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,8,.8) 0%,transparent 55%);display:flex;align-items:flex-end;padding:16px}
+
+/* ───────────── SCROLL REVEAL ───────────── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal-left.revealed{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal-right.revealed{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}
+
+/* ───────────── RESPONSIVE ───────────── */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .hero-content{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img-wrap{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .section{padding:72px 0}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-buttons{flex-direction:column;align-items:flex-start}
+  .hero-stats{gap:20px}
+  h1{font-size:2.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="Dynamic Digitals" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span style="display:none">Dynamic Digitals</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary" style="padding:10px 24px;font-size:.84rem">Get Started</a>
+    </div>
+    <div class="burger" id="burgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Get Started</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="orb hero-orb1 orb"></div>
+  <div class="orb hero-orb2 orb"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text reveal">
+        <div class="tag">Addis Ababa's Premier Agency</div>
+        <h1 class="hero-h1">Grow Your Brand With <em>Smart Digital Marketing</em></h1>
+        <p class="hero-sub">Dynamic Digitals helps businesses across Ethiopia build powerful online presences, attract real customers, and drive consistent sales growth through creative, data-driven marketing.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get Started ↗</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">100<span>+</span></div>
+            <div class="stat-label">Clients Served</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3<span>x</span></div>
+            <div class="stat-label">Avg. Growth</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">5<span>★</span></div>
+            <div class="stat-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual reveal delay-2">
+        <div class="hero-card-wrap">
+          <div class="float-badge b1"><span class="badge-num">↑ 32%</span>Reach Growth</div>
+          <div class="hero-mock">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+            <div style="font-family:var(--ff-head);font-size:.78rem;color:var(--muted);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase">Campaign Performance</div>
+            <div class="mock-chart" id="mockChart">
+              <div class="mock-bar-item" style="height:38%"></div>
+              <div class="mock-bar-item" style="height:52%"></div>
+              <div class="mock-bar-item" style="height:44%"></div>
+              <div class="mock-bar-item" style="height:63%"></div>
+              <div class="mock-bar-item" style="height:55%"></div>
+              <div class="mock-bar-item" style="height:72%"></div>
+              <div class="mock-bar-item" style="height:68%"></div>
+            </div>
+            <div class="mock-metric">
+              <span class="metric-label">Reach Growth</span>
+              <div><span class="metric-val" data-target="32">0</span><span class="metric-val">%</span> <span class="metric-up">↑ +32%</span></div>
+            </div>
+            <div class="mock-metric">
+              <span class="metric-label">Engagement</span>
+              <div><span class="metric-val" data-target="18">0</span><span class="metric-val">%</span> <span class="metric-up">↑ +18%</span></div>
+            </div>
+            <div class="mock-metric">
+              <span class="metric-label">Ad Performance</span>
+              <div><span class="metric-val" data-target="21">0</span><span class="metric-val">%</span> <span class="metric-up">↑ +21%</span></div>
+            </div>
+          </div>
+          <div class="float-badge b2"><span class="badge-num">+5</span>New Customers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-frame">
+          <img src="yon_amsalu.jpg" alt="Yonatan Amsalu – Founder & CEO of Dynamic Digitals" onerror="this.src='https://placehold.co/480x600/12121c/A100FF?text=Yonatan+Amsalu'"/>
+        </div>
+        <div class="about-badge">
+          <strong>2+</strong>
+          <small>Years of Digital Excellence</small>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <div class="tag">About Us</div>
+        <h2>The Agency Built for Real Business Growth</h2>
+        <p>Dynamic Digitals is a modern digital marketing agency based in Addis Ababa focused on helping businesses grow their online presence, attract customers, and increase sales through creative and strategic digital marketing solutions.</p>
+        <p>We work closely with businesses to create meaningful brands, engaging content, and effective marketing campaigns that deliver real, measurable results — not just vanity metrics.</p>
+        <p>From startups to established businesses, we tailor every strategy to your goals, your audience, and your market.</p>
+        <div class="founder-card">
+          <img src="yon_amsalu.jpg" alt="Yonatan Amsalu" class="founder-avatar" onerror="this.src='https://placehold.co/72/A100FF/fff?text=YA'"/>
+          <div class="founder-info">
+            <h4>Yonatan Amsalu</h4>
+            <p>Founder & Chief Executive Officer</p>
+            <div class="social-row">
+              <!-- Facebook -->
+              <a href="https://facebook.com/yonatanamsaluuvid" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/yonatanamsaluu" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" style="fill:var(--dark)"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" style="stroke:var(--dark);stroke-width:2;stroke-linecap:round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">What We Do</div>
+      <h2>Our Services</h2>
+      <p>Every service is crafted to move the needle for your business — more customers, more reach, more revenue.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- 1 -->
+      <div class="service-card reveal delay-1">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zM12 15a3 3 0 110-6 3 3 0 010 6zm4.5-8a1 1 0 110-2 1 1 0 010 2z"/></svg>
+        </div>
+        <h3>Social Media Management</h3>
+        <p>Managing social media pages professionally with consistent posting, audience engagement, and brand growth strategies.</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-card reveal delay-2">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h3>Content Creation & Design</h3>
+        <p>Creating attractive graphics, marketing visuals, and engaging content tailored for businesses and brands.</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-card reveal delay-3">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </div>
+        <h3>Facebook Advertising</h3>
+        <p>Running targeted Facebook advertising campaigns designed to increase reach, sales, and customer engagement.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-card reveal delay-1">
+        <div class="service-num">04</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Social Media Strategy & Consulting</h3>
+        <p>Helping businesses build effective social media strategies and providing professional digital marketing guidance.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-card reveal delay-2">
+        <div class="service-num">05</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/><circle cx="18" cy="16" r="3"/><path d="M21 19l-1.5-1.5"/></svg>
+        </div>
+        <h3>Influencer Marketing</h3>
+        <p>Connecting businesses with influencers to promote products and services to targeted audiences.</p>
+      </div>
+
+      <!-- CTA card -->
+      <div class="service-card reveal delay-3" style="background:linear-gradient(135deg,rgba(161,0,255,.2),rgba(85,0,204,.15));display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+        <div class="service-num" style="color:rgba(161,0,255,.15)">✦</div>
+        <h3 style="font-size:1.5rem;margin-bottom:12px">Ready to grow your brand?</h3>
+        <p style="margin-bottom:24px;font-size:.9rem">Let's build a marketing strategy that delivers real results for your business.</p>
+        <a href="#contact" class="btn btn-primary" style="font-size:.85rem;padding:12px 24px">Start Today ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ VIDEO ═══════════════ -->
+<section id="video-section" class="section">
+  <div class="video-bg-orb"></div>
+  <div class="container">
+    <div class="video-inner">
+      <div class="tag reveal" style="display:inline-flex">Our Work in Action</div>
+      <h2 class="reveal delay-1">See How We Help Brands Grow</h2>
+      <p class="reveal delay-2">Dynamic Digitals helps businesses attract customers and grow online through creative digital marketing strategies tailored for the Ethiopian market and beyond.</p>
+      <div class="video-frame-wrap reveal delay-3">
+        <div class="video-glow-ring"></div>
+        <div class="video-container" id="videoContainer">
+          <video id="heroVideo" autoplay muted loop playsinline src="vid_01.mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-shine"></div>
+          <!-- Custom controls overlay -->
+          <div class="video-controls" id="videoControls">
+            <button class="vid-btn" id="muteBtn" onclick="toggleMute()" aria-label="Toggle mute">
+              <svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+              <svg id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+            </button>
+            <div class="vol-wrap">
+              <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0" class="vol-slider" oninput="setVolume(this.value)" aria-label="Volume"/>
+            </div>
+            <button class="vid-btn" id="playBtn" onclick="togglePlay()" aria-label="Toggle play">
+              <svg id="playIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <svg id="pauseIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="reveal delay-4" style="margin-top:20px;font-size:.85rem;color:rgba(136,136,168,.6);letter-spacing:.04em">Tap the <span style="color:var(--purple)">🔇</span> icon to unmute the video</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHY US ═══════════════ -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">Our Advantage</div>
+      <h2>Why Businesses Choose Dynamic Digitals</h2>
+      <p>We combine creativity, strategy, and dedication to deliver marketing that actually works.</p>
+    </div>
+    <div class="why-grid">
+      <!-- 1 Creative Strategy -->
+      <div class="why-card reveal delay-1">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Creative Marketing Strategies</h3>
+        <p>Every strategy is custom-built around your business goals — no templates, no shortcuts. Just focused, original thinking.</p>
+      </div>
+      <!-- 2 Content Creation -->
+      <div class="why-card reveal delay-2">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+        </div>
+        <h3>Professional Content Creation</h3>
+        <p>High-quality visuals, videos, and copy crafted to capture attention and turn viewers into loyal, paying customers.</p>
+      </div>
+      <!-- 3 Customer Focus -->
+      <div class="why-card reveal delay-3">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Customer-Focused Approach</h3>
+        <p>We listen first. Every decision is shaped by understanding your market, your audience, and your business vision.</p>
+      </div>
+      <!-- 4 Results Driven -->
+      <div class="why-card reveal delay-1">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Results-Driven Campaigns</h3>
+        <p>We measure everything. Data-backed decisions ensure your marketing investment generates real, consistent returns.</p>
+      </div>
+      <!-- 5 Branding -->
+      <div class="why-card reveal delay-2">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Modern Branding Solutions</h3>
+        <p>Build an identity that resonates emotionally with customers and positions your business for long-term growth.</p>
+      </div>
+      <!-- 6 Support -->
+      <div class="why-card reveal delay-3">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Dedicated Support</h3>
+        <p>You're never left alone. Our team stays available to refine strategies, answer questions, and champion your growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PARTNERSHIPS ═══════════════ -->
+<section id="partnerships" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">Our Partnerships</div>
+      <h2>Trusted Brands We've Worked With</h2>
+      <p>We build long-term partnerships with businesses by helping them grow their brand, attract customers, and strengthen their digital presence through creative marketing solutions.</p>
+    </div>
+
+    <!-- Desktop Grid (shown on ≥769px) -->
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Initially visible: G1–G6 -->
+      <div class="gallery-item reveal delay-1">
+        <img src="G1.png" alt="We Care" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=We+Care'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">We Care</span></div>
+      </div>
+      <div class="gallery-item reveal delay-2">
+        <img src="G2.png" alt="Ethio Maple Wood Floor" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Ethio+Maple+Wood'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Ethio Maple Wood Floor</span></div>
+      </div>
+      <div class="gallery-item reveal delay-3">
+        <img src="G3.png" alt="Mak Pizza & Burger" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Mak+Pizza'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Mak Pizza & Burger</span></div>
+      </div>
+      <div class="gallery-item reveal delay-1">
+        <img src="G4.png" alt="Galaxy Furniture" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Galaxy+Furniture'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Galaxy Furniture</span></div>
+      </div>
+      <div class="gallery-item reveal delay-2">
+        <img src="G5.png" alt="Adkia" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Adkia'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Adkia</span></div>
+      </div>
+      <div class="gallery-item reveal delay-3">
+        <img src="G6.png" alt="Pika Herbal" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Pika+Herbal'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Pika Herbal</span></div>
+      </div>
+      <!-- Hidden extra: G7–G14 -->
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G7.png" alt="Armana Trading PLC" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Armana+Trading'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Armana Trading PLC</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G8.png" alt="Bright Future Trading" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Bright+Future'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Bright Future Trading</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G9.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G10.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G11.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G12.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G13.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+      <div class="gallery-item gallery-hidden" data-extra>
+        <img src="G14.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/1080x1350/12121c/A100FF?text=Client'"/>
+        <div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div>
+      </div>
+    </div>
+
+    <!-- View More button (desktop) -->
+    <div class="view-more-wrap reveal" id="viewMoreWrap">
+      <button class="btn-view-more" id="viewMoreBtn" onclick="toggleGallery()">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        View More Partners
+      </button>
+    </div>
+
+    <!-- Mobile horizontal scroll -->
+    <div class="gallery-scroll-wrap" id="galleryScroll">
+      <div class="gallery-scroll-item"><img src="G1.png" alt="We Care" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=We+Care'"/><div class="gallery-overlay"><span class="gallery-caption-always">We Care</span></div></div>
+      <div class="gallery-scroll-item"><img src="G2.png" alt="Ethio Maple Wood Floor" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Ethio+Maple'"/><div class="gallery-overlay"><span class="gallery-caption-always">Ethio Maple Wood Floor</span></div></div>
+      <div class="gallery-scroll-item"><img src="G3.png" alt="Mak Pizza & Burger" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Mak+Pizza'"/><div class="gallery-overlay"><span class="gallery-caption-always">Mak Pizza & Burger</span></div></div>
+      <div class="gallery-scroll-item"><img src="G4.png" alt="Galaxy Furniture" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Galaxy+Furniture'"/><div class="gallery-overlay"><span class="gallery-caption-always">Galaxy Furniture</span></div></div>
+      <div class="gallery-scroll-item"><img src="G5.png" alt="Adkia" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Adkia'"/><div class="gallery-overlay"><span class="gallery-caption-always">Adkia</span></div></div>
+      <div class="gallery-scroll-item"><img src="G6.png" alt="Pika Herbal" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Pika+Herbal'"/><div class="gallery-overlay"><span class="gallery-caption-always">Pika Herbal</span></div></div>
+      <div class="gallery-scroll-item"><img src="G7.png" alt="Armana Trading PLC" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Armana+Trading'"/><div class="gallery-overlay"><span class="gallery-caption-always">Armana Trading PLC</span></div></div>
+      <div class="gallery-scroll-item"><img src="G8.png" alt="Bright Future Trading" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Bright+Future'"/><div class="gallery-overlay"><span class="gallery-caption-always">Bright Future Trading</span></div></div>
+      <div class="gallery-scroll-item"><img src="G9.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+      <div class="gallery-scroll-item"><img src="G10.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+      <div class="gallery-scroll-item"><img src="G11.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+      <div class="gallery-scroll-item"><img src="G12.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+      <div class="gallery-scroll-item"><img src="G13.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+      <div class="gallery-scroll-item"><img src="G14.png" alt="Another Client" loading="lazy" onerror="this.src='https://placehold.co/300x375/12121c/A100FF?text=Client'"/><div class="gallery-overlay"><span class="gallery-caption-always">Another Client</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">Client Stories</div>
+      <h2>What Our Clients Say</h2>
+      <p>Don't just take our word for it — here's what businesses we've worked with have to say.</p>
+    </div>
+  </div>
+  <!-- Duplicated for seamless infinite loop -->
+  <div class="testimonials-track-wrap reveal delay-2">
+    <div class="testimonials-track">
+
+      <!-- Card 1 -->
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"If you want to grow your business, look at Dynamic Digitals. They are the best digital marketing agency in Addis Ababa. They know how to increase sales and connect with customers. Yonatan Amsalu, the CEO, is very skilled and ensures good results. Teaming up with Dynamic Digitals is a great choice for your business growth!"</p>
+        <div class="t-client">
+          <img src="mak_pizza.jpg" alt="Mak Pizzeria & Burger" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=M'"/>
+          <div><div class="t-client-name">Mak Pizzeria & Burger</div><div class="t-client-role">Restaurant & Fast Food</div></div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"For businesses seeking to elevate their marketing efforts, Dynamic Digitals stands out as the premier digital marketing agency in Addis Ababa. They specialize in increasing sales, growing customer bases, and cultivating authentic brands. Led by the dedicated CEO Yonatan Amsalu, the team consistently delivers impressive results."</p>
+        <div class="t-client">
+          <img src="piassa_hotel.jpg" alt="Piassa Hotel" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=P'"/>
+          <div><div class="t-client-name">Piassa Hotel</div><div class="t-client-role">Hospitality & Tourism</div></div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"If you're looking for exceptional growth for your business, consider Dynamic Digitals — the leading digital marketing agency in Addis Ababa. With a proven track record in enhancing sales and expanding customer reach, they are true experts. Under the leadership of CEO Yonatan Amsalu, they are committed to outstanding results."</p>
+        <div class="t-client">
+          <img src="Tefcon Construction.jpg" alt="Tefcon Construction" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=T'"/>
+          <div><div class="t-client-name">Tefcon Construction</div><div class="t-client-role">Construction & Engineering</div></div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"Dynamic Digitals is the top digital marketing agency in Addis Ababa, known for its expertise in boosting sales, expanding customer bases, and building authentic brands. Founded and led by the highly professional CEO Yonatan Amsalu, the agency is dedicated to delivering excellent results. We highly recommend them."</p>
+        <div class="t-client">
+          <img src="Roha Import Company.jpg" alt="Roha Import Company" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=R'"/>
+          <div><div class="t-client-name">Roha Import Company</div><div class="t-client-role">Import & Trade</div></div>
+        </div>
+      </div>
+
+      <!-- Duplicates for seamless loop -->
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"If you want to grow your business, look at Dynamic Digitals. They are the best digital marketing agency in Addis Ababa. They know how to increase sales and connect with customers. Yonatan Amsalu, the CEO, is very skilled and ensures good results. Teaming up with Dynamic Digitals is a great choice!"</p>
+        <div class="t-client">
+          <img src="mak_pizza.jpg" alt="Mak Pizzeria & Burger" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=M'"/>
+          <div><div class="t-client-name">Mak Pizzeria & Burger</div><div class="t-client-role">Restaurant & Fast Food</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"For businesses seeking to elevate their marketing efforts, Dynamic Digitals stands out as the premier digital marketing agency in Addis Ababa. They specialize in increasing sales, growing customer bases, and cultivating authentic brands. We wholeheartedly recommend Dynamic Digitals for anyone aiming for enhanced business success."</p>
+        <div class="t-client">
+          <img src="piassa_hotel.jpg" alt="Piassa Hotel" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=P'"/>
+          <div><div class="t-client-name">Piassa Hotel</div><div class="t-client-role">Hospitality & Tourism</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"If you're looking for exceptional growth for your business, consider Dynamic Digitals, the leading digital marketing agency in Addis Ababa. With a proven track record in enhancing sales, expanding customer reach, and creating meaningful brands, they are experts in their field. We strongly endorse their services."</p>
+        <div class="t-client">
+          <img src="Tefcon Construction.jpg" alt="Tefcon Construction" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=T'"/>
+          <div><div class="t-client-name">Tefcon Construction</div><div class="t-client-role">Construction & Engineering</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"Dynamic Digitals is the top digital marketing agency in Addis Ababa, known for its expertise in boosting sales, expanding customer bases, and building authentic brands for businesses. We highly recommend partnering with Dynamic Digitals for significant business growth."</p>
+        <div class="t-client">
+          <img src="Roha Import Company.jpg" alt="Roha Import Company" class="t-client-img" onerror="this.src='https://placehold.co/48/12121c/A100FF?text=R'"/>
+          <div><div class="t-client-name">Roha Import Company</div><div class="t-client-role">Import & Trade</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <div class="tag">Get in Touch</div>
+        <h2>Let's Grow Your Business Together</h2>
+        <p style="margin-bottom:36px">Ready to take your brand to the next level? Reach out and let's talk about how Dynamic Digitals can help you attract more customers and grow your revenue.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.83 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.74 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+251923460000" style="color:var(--white)">+251 923 460 000</a></p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:dynamicdigitals11@gmail.com" style="color:var(--white)">dynamicdigitals11@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>4 Kilo, Addis Ababa, Ethiopia</p>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=4+Kilo+Addis+Ababa&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Dynamic Digitals Location"></iframe>
+        </div>
+      </div>
+
+      <div class="contact-form reveal-right">
+        <div style="margin-bottom:28px">
+          <h3>Send Us a Message</h3>
+          <p style="font-size:.88rem;margin-top:6px">Fill in the form and we'll get back to you within 24 hours.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Abebe"/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Kebede"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="abebe@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+251 9XX XXX XXX"/>
+        </div>
+        <div class="form-group">
+          <label>Service You're Interested In</label>
+          <select style="width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:13px 16px;color:var(--text);font-family:var(--ff-body);font-size:.95rem;outline:none;transition:.25s;appearance:none">
+            <option value="" style="background:var(--dark)">Select a service…</option>
+            <option style="background:var(--dark)">Social Media Management</option>
+            <option style="background:var(--dark)">Content Creation & Design</option>
+            <option style="background:var(--dark)">Facebook Advertising</option>
+            <option style="background:var(--dark)">Social Media Strategy & Consulting</option>
+            <option style="background:var(--dark)">Influencer Marketing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea placeholder="Tell us about your business and goals…"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleFormSubmit(event)">Send Message ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Dynamic Digitals" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">Dynamic Digitals</div>
+        <p>Focus on your business. We'll bring the customers. Your premier digital marketing agency in Addis Ababa, Ethiopia.</p>
+        <div class="footer-socials" style="margin-top:24px">
+          <!-- Facebook -->
+          <a href="https://facebook.com/dynamicdigitalss" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="https://t.me/dynamicdigitals" class="footer-social" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@dynamicdigitalss" class="footer-social" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.79a8.18 8.18 0 004.79 1.53V6.87a4.85 4.85 0 01-1.02-.18z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Social Media Management</a></li>
+          <li><a href="#services">Content Creation & Design</a></li>
+          <li><a href="#services">Facebook Advertising</a></li>
+          <li><a href="#services">Strategy & Consulting</a></li>
+          <li><a href="#services">Influencer Marketing</a></li>
+        </ul>
+        <div style="margin-top:28px">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+251923460000">+251 923 460 000</a></li>
+            <li><a href="mailto:dynamicdigitals11@gmail.com">dynamicdigitals11@gmail.com</a></li>
+            <li><a href="#contact">4 Kilo, Addis Ababa</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 <span>Dynamic Digitals</span>. All rights reserved.</p>
+      <p>Made with <span>♥</span> in Addis Ababa, Ethiopia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+/* ── Navbar scroll ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+/* ── Mobile menu ── */
+const burger = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobile() {
+  burger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── Active nav link ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+
+/* ── Scroll reveal ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+/* ── Mock chart animation ── */
+const bars = document.querySelectorAll('.mock-bar-item');
+bars.forEach(b => {
+  const h = b.style.height;
+  b.style.height = '0';
+  setTimeout(() => { b.style.transition = 'height 1s cubic-bezier(.4,0,.2,1)'; b.style.height = h; }, 600 + Math.random() * 400);
+});
+
+/* ── Counter animation for dashboard metrics ── */
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); }
+    else el.textContent = Math.floor(start);
+  }, 16);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        animateCounter(el, parseInt(el.dataset.target), 1200);
+      });
+      counterObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const mockEl = document.querySelector('.hero-mock');
+if (mockEl) counterObserver.observe(mockEl);
+
+/* ── Video Controls ── */
+const heroVideo = document.getElementById('heroVideo');
+const muteBtn = document.getElementById('muteBtn');
+const muteIcon = document.getElementById('muteIcon');
+const soundIcon = document.getElementById('soundIcon');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+const volSlider = document.getElementById('volSlider');
+
+function toggleMute() {
+  if (!heroVideo) return;
+  heroVideo.muted = !heroVideo.muted;
+  if (heroVideo.muted) {
+    muteIcon.style.display = 'block'; soundIcon.style.display = 'none';
+    volSlider.value = 0;
+  } else {
+    muteIcon.style.display = 'none'; soundIcon.style.display = 'block';
+    if (heroVideo.volume === 0) heroVideo.volume = 0.7;
+    volSlider.value = heroVideo.volume;
+  }
+}
+
+function setVolume(val) {
+  if (!heroVideo) return;
+  heroVideo.volume = parseFloat(val);
+  heroVideo.muted = parseFloat(val) === 0;
+  if (heroVideo.muted) {
+    muteIcon.style.display = 'block'; soundIcon.style.display = 'none';
+  } else {
+    muteIcon.style.display = 'none'; soundIcon.style.display = 'block';
+  }
+}
+
+function togglePlay() {
+  if (!heroVideo) return;
+  if (heroVideo.paused) {
+    heroVideo.play();
+    playIcon.style.display = 'none'; pauseIcon.style.display = 'block';
+  } else {
+    heroVideo.pause();
+    playIcon.style.display = 'block'; pauseIcon.style.display = 'none';
+  }
+}
+
+/* Show controls on tap for mobile */
+const videoContainer = document.getElementById('videoContainer');
+const videoControls = document.getElementById('videoControls');
+if (videoContainer) {
+  videoContainer.addEventListener('touchstart', () => {
+    videoControls.style.opacity = '1';
+    clearTimeout(videoContainer._hideTimer);
+    videoContainer._hideTimer = setTimeout(() => { videoControls.style.opacity = ''; }, 3000);
+  }, { passive: true });
+}
+
+/* ── Gallery View More ── */
+let galleryExpanded = false;
+function toggleGallery() {
+  const extras = document.querySelectorAll('[data-extra]');
+  const btn = document.getElementById('viewMoreBtn');
+  galleryExpanded = !galleryExpanded;
+  extras.forEach((el, i) => {
+    if (galleryExpanded) {
+      el.classList.remove('gallery-hidden');
+      el.style.animationDelay = (i * 0.07) + 's';
+      el.classList.add('gallery-reveal-animate');
+    } else {
+      el.classList.add('gallery-hidden');
+      el.classList.remove('gallery-reveal-animate');
+    }
+  });
+  btn.innerHTML = galleryExpanded
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Show Less`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> View More Partners`;
+}
+
+/* ── Contact form ── */
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = 'linear-gradient(135deg,#22d97a,#00aa55)';
+  btn.style.boxShadow = '0 0 40px rgba(34,217,122,.4)';
+  setTimeout(() => {
+    btn.textContent = 'Send Message ↗';
+    btn.style.background = '';
+    btn.style.boxShadow = '';
+  }, 3500);
+}
+</script>
+</body>
+</html>
